@@ -29,4 +29,12 @@ public class PatientRegisterService {
     public List<PatientRegister>getDetailsByPatient(String patientName){
         return patientRegisterRepository.findByPatientNameContainingIgnoreCase(patientName);
     }
+
+    public int countPatients() {
+        return (int) patientRegisterRepository.count();
+    }
+
+    public PatientRegister getPatientDetails(int patientId){
+        return patientRegisterRepository.findPatientById(patientId);
+    }
 }

@@ -22,12 +22,17 @@ public class PatientRegister {
     @Column(name = "phone_number")
     private int phone_number;
 
+    @Column(name="username")
+    private String username;
+
+    @Column(name="password")
+    private String password;
+
     @Column(name = "registered_date")
     private String registered_date;
 
     @Column(name = "registered_time")
     private String registered_time;
-
 
     public PatientRegister(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -71,6 +76,22 @@ public class PatientRegister {
         this.phone_number = phone_number;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getRegistered_date() {
         return registered_date;
     }
@@ -86,4 +107,9 @@ public class PatientRegister {
     public void setRegistered_time(String registered_time) {
         this.registered_time = registered_time;
     }
+
+    public boolean authenticate(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
 }

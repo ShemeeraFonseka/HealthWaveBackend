@@ -3,6 +3,8 @@ import com.example.HealthWave.data.Appointment;
 import com.example.HealthWave.data.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,5 +38,9 @@ public class AppointmentService {
 
     public List<Appointment>getAppointmentsByPatient(String patientName){
         return appointmentRepository.findByPatientNameContainingIgnoreCase(patientName);
+    }
+
+    public int countAppointmentsForDay(LocalDate date) {
+        return appointmentRepository.countAppointmentsForDay(date);
     }
 }

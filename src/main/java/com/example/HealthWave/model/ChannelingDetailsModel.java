@@ -1,78 +1,28 @@
-package com.example.HealthWave.data;
+package com.example.HealthWave.model;
+
 import jakarta.persistence.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import java.sql.Date;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-
 
 @Entity
 @Table(name="appointments")
-public class Appointment {
+public class ChannelingDetailsModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int appointment_id;
 
-    @Column(name="patient_name")
     private String patient_name;
-
-    @Column(name="patient_id")
     private int patient_id;
-
-    @Column(name="phone_number")
     private int phone_number;
-
-    @Column(name="email")
     private String email;
-
-    @Column(name="doctor_name")
     private String doctor_name;
-
-    @Column(name="doctor_id")
-    private int doctor_id;
-
-    @Column(name="patient_no")
     private int patient_no;
-
-    @Column(name="doctor_date")
     private String doctor_date;
-
-    @Column(name="doctor_time")
     private String doctor_time;
-
-    @Column(name="appointment_date")
     private String appointment_date;
-
-    @Column(name="appointment_time")
     private String appointment_time;
-
-    @Column(name="doctor_fee")
-    private float doctor_fee;
-
-    @Column(name="hospital_fee")
-    private float hospital_fee;
-
-    @Column(name="total_fee")
-    private float total_fee;
-
-    public Appointment() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        Date currentDate = new Date(System.currentTimeMillis());
-
-        this.appointment_date = dateFormat.format(currentDate);
-        this.appointment_time = timeFormat.format(currentDate);
-    }
-
-    public int getAppointment_id() {
-        return appointment_id;
-    }
-
-    public void setAppointment_id(int appointment_id) {
-        this.appointment_id = appointment_id;
-    }
+    private int doctor_fee;
+    private int hospital_fee;
+    private int total_fee;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long appointment_id;
 
     public String getPatient_name() {
         return patient_name;
@@ -112,14 +62,6 @@ public class Appointment {
 
     public void setDoctor_name(String doctor_name) {
         this.doctor_name = doctor_name;
-    }
-
-    public int getDoctor_id() {
-        return doctor_id;
-    }
-
-    public void setDoctor_id(int doctor_id) {
-        this.doctor_id = doctor_id;
     }
 
     public int getPatient_no() {
@@ -162,27 +104,35 @@ public class Appointment {
         this.appointment_time = appointment_time;
     }
 
-    public float getDoctor_fee() {
+    public int getDoctor_fee() {
         return doctor_fee;
     }
 
-    public void setDoctor_fee(float doctor_fee) {
+    public void setDoctor_fee(int doctor_fee) {
         this.doctor_fee = doctor_fee;
     }
 
-    public float getHospital_fee() {
+    public int getHospital_fee() {
         return hospital_fee;
     }
 
-    public void setHospital_fee(float hospital_fee) {
+    public void setHospital_fee(int hospital_fee) {
         this.hospital_fee = hospital_fee;
     }
 
-    public float getTotal_fee() {
+    public int getTotal_fee() {
         return total_fee;
     }
 
-    public void setTotal_fee(float total_fee) {
+    public void setTotal_fee(int total_fee) {
         this.total_fee = total_fee;
+    }
+
+    public Long getAppointment_id() {
+        return appointment_id;
+    }
+
+    public void setAppointment_id(Long appointment_id) {
+        this.appointment_id = appointment_id;
     }
 }
